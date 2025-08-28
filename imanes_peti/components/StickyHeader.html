@@ -1,0 +1,25 @@
+<!-- Sticky Header Component -->
+<!-- This structure is ready for React conversion -->
+<header class="sticky top-0 z-50 w-full glass-effect backdrop-blur-md py-3 px-4">
+  <div class="flex items-center justify-between">
+    <button onclick="showGallery()" 
+            class="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i>
+      <span class="font-medium text-sm">Back to Gallery</span>
+    </button>
+    
+    <!-- Optional: Add cart icon, user menu, etc. -->
+    <div class="flex items-center space-x-4">
+      <!-- Future: Shopping cart button -->
+      <!-- Future: User menu -->
+    </div>
+  </div>
+</header>
+
+<!-- React Conversion Notes:
+  - onclick will become onClick with React navigation
+  - Can use React Router for navigation
+  - Button text can be props
+  - Additional header items can be passed as children
+  - Navigation state can be managed with React context
+-->

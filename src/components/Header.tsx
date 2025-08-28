@@ -1,14 +1,6 @@
 import { Camera } from 'lucide-react';
 
-interface HeaderProps {
-  title?: string;
-  subtitle?: string;
-  description?: string;
-}
-
-const Header = ({ 
-  description = "Discover our curated collection of premium products, each piece carefully selected for its exceptional quality and timeless design."
-}: HeaderProps) => {
+const Header = () => {
   return (
     <header className="text-center mb-12 fade-in">
       <div className="flex items-start justify-center mb-4">

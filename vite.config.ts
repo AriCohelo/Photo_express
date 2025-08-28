@@ -5,5 +5,5 @@ import tailwindcss from '@tailwindcss/vite';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/Photo_express/',
+  base: 'https://AriCohelo.github.io/Photo_express/',
 });

@@ -15,6 +15,7 @@ const Gallery = () => {
     if (product) {
       setSelectedProduct(product);
       setCurrentView('detail');
+      window.scrollTo(0, 0);
     }
   };
 

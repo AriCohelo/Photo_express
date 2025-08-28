@@ -26,18 +26,18 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    id: 1,
-    title: "Iman Individual",
-    price: "€5 + envío",
-    rating: "(4.8) • 2,847 reviews",
-    ratingValue: 4.8,
-    reviewCount: 2847,
-    stock: 12,
-    description: "Diseño magnético individual elegante elaborado para estilo personal y funcionalidad. Perfecto para uso diario con materiales premium y estética sofisticada.",
-    mainImage: "iman-individual.jpg",
+    id: 3,
+    title: "Iman Collage",
+    price: "€7 + envío",
+    rating: "(4.7) • 956 reviews",
+    ratingValue: 4.7,
+    reviewCount: 956,
+    stock: 15,
+    description: "Diseño de collage creativo para expresión artística. Perfecto para quienes aprecian la estética única y la funcionalidad magnética innovadora.",
+    mainImage: "iman-collage.jpg",
     thumbnails: [
-      "iman-individual.jpg",
-      "iman-individual-2.jpg"
+      "iman-collage.jpg",
+      "iman-collage-2.jpg"
     ],
     features: [
       { 
@@ -47,8 +47,8 @@ export const products: Product[] = [
       },
       { 
         icon: "image", 
-        title: "Calidad Fotográfica", 
-        description: "Impresión profesional" 
+        title: "Diseño Collage", 
+        description: "Composición creativa" 
       },
       { 
         icon: "droplets", 
@@ -57,8 +57,8 @@ export const products: Product[] = [
       },
       { 
         icon: "star", 
-        title: "Diseño Premium", 
-        description: "Estilo individual" 
+        title: "Estilo Artístico", 
+        description: "Expresión creativa" 
       }
     ],
     specifications: [
@@ -136,18 +136,18 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 3,
-    title: "Iman Collage",
-    price: "€7 + envío",
-    rating: "(4.7) • 956 reviews",
-    ratingValue: 4.7,
-    reviewCount: 956,
-    stock: 15,
-    description: "Diseño de collage creativo para expresión artística. Perfecto para quienes aprecian la estética única y la funcionalidad magnética innovadora.",
-    mainImage: "iman-collage.jpg",
+    id: 1,
+    title: "Iman Individual",
+    price: "€5 + envío",
+    rating: "(4.8) • 2,847 reviews",
+    ratingValue: 4.8,
+    reviewCount: 2847,
+    stock: 12,
+    description: "Diseño magnético individual elegante elaborado para estilo personal y funcionalidad. Perfecto para uso diario con materiales premium y estética sofisticada.",
+    mainImage: "iman-individual.jpg",
     thumbnails: [
-      "iman-collage.jpg",
-      "iman-collage-2.jpg"
+      "iman-individual.jpg",
+      "iman-individual-2.jpg"
     ],
     features: [
       { 
@@ -157,8 +157,8 @@ export const products: Product[] = [
       },
       { 
         icon: "image", 
-        title: "Diseño Collage", 
-        description: "Composición creativa" 
+        title: "Calidad Fotográfica", 
+        description: "Impresión profesional" 
       },
       { 
         icon: "droplets", 
@@ -167,8 +167,8 @@ export const products: Product[] = [
       },
       { 
         icon: "star", 
-        title: "Estilo Artístico", 
-        description: "Expresión creativa" 
+        title: "Diseño Premium", 
+        description: "Estilo individual" 
       }
     ],
     specifications: [

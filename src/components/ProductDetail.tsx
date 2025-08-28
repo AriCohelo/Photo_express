@@ -59,23 +59,13 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Product Images Section */}
-            <div>
-              {/* Main Image */}
-              <div className="aspect-[2/3] mb-6 overflow-hidden rounded-2xl bg-white/25 backdrop-blur-[10px] border border-white/[0.18]">
-                <img
-                  src={currentImage}
-                  alt={product.title}
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                />
-              </div>
-
-              {/* Thumbnail Gallery */}
-              <div className="grid grid-cols-2 gap-4">
+            <div className="flex gap-4">
+              {/* Thumbnail Gallery - Vertical on left side */}
+              <div className="flex flex-col gap-2 w-20">
                 {product.thumbnails.map((thumb, index) => (
                   <div
                     key={index}
-                    className={`aspect-[2/3] overflow-hidden rounded-xl bg-white/25 backdrop-blur-[10px] border cursor-pointer transition-all duration-300 hover:scale-105 ${
+                    className={`aspect-[2/3] overflow-hidden rounded-lg bg-white/25 backdrop-blur-[10px] border cursor-pointer transition-all duration-300 hover:scale-105 ${
                       currentImage === thumb ? 'border-[#B85450] !border-[3px]' : 'border-white/[0.18]'
                     }`}
                     onClick={() => changeMainImage(thumb)}
@@ -87,6 +77,18 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
                     />
                   </div>
                 ))}
+              </div>
+
+              {/* Main Image */}
+              <div className="flex-1">
+                <div className="aspect-[2/3] overflow-hidden rounded-2xl bg-white/25 backdrop-blur-[10px] border border-white/[0.18]">
+                  <img
+                    src={currentImage}
+                    alt={product.title}
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                  />
+                </div>
               </div>
             </div>
 

@@ -2,26 +2,18 @@
 
 /* Theme Variables */
 :root {
-  /* Brand Colors */
-  --champagne-pink: #F7DFD4;
-  --tea-rose: #E8B4CB;
-  --redwood: #B85450;
-  --violet: #7209B7;
-  --violet-jtc: #5d2e46;
-  --logo-teal: #2d7a7a;
-  --logo-orange: #ff6b35;
-  
-  /* UI Colors */
-  --background: linear-gradient(135deg, var(--champagne-pink) 0%, var(--tea-rose) 50%, var(--redwood) 100%);
-  --glass-background: rgba(255, 255, 255, 0.25);
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --glass-hover: rgba(255, 255, 255, 0.3);
-  --feature-card-background: rgba(255, 255, 255, 0.3);
-  
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.6s ease;
+  /* Brand Colors - Only used by background gradient */
+  --champagne-pink: #f7dfd4;
+  --tea-rose: #e8b4cb;
+  --redwood: #b85450;
+
+  /* Background */
+  --background: linear-gradient(
+    135deg,
+    var(--champagne-pink) 0%,
+    var(--tea-rose) 50%,
+    var(--redwood) 100%
+  );
 }
 
 /* Base Styles */
@@ -33,117 +25,4 @@ body {
   padding: 0;
 }
 
-/* Glass Effect Utilities */
-.glass-effect {
-  background: var(--glass-background) !important;
-  backdrop-filter: blur(10px) !important;
-  border: 1px solid var(--glass-border) !important;
-}
 
-.glass-hover:hover {
-  background: var(--glass-hover) !important;
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, var(--redwood), var(--violet)) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-}
-
-.logo-text {
-  color: var(--logo-teal) !important;
-}
-
-.logo-accent {
-  color: var(--logo-orange) !important;
-}
-
-.logo-icon {
-  color: var(--logo-teal) !important;
-}
-
-/* Animation Classes */
-.fade-in {
-  animation: fadeIn var(--transition-slow) ease-out;
-}
-
-@keyframes fadeIn {
-  from { 
-    opacity: 0; 
-    transform: translateY(20px); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
-  }
-}
-
-/* Component Styles */
-.product-card {
-  transition: all var(--transition-normal);
-  cursor: pointer;
-}
-
-.product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.thumbnail {
-  transition: all var(--transition-normal);
-  cursor: pointer;
-}
-
-.thumbnail:hover {
-  transform: scale(1.05);
-}
-
-.thumbnail.active {
-  border: 3px solid var(--redwood) !important;
-}
-
-.feature-card {
-  background: var(--feature-card-background);
-  backdrop-filter: blur(10px);
-  transition: all var(--transition-normal);
-}
-
-.feature-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(93, 46, 70, 0.1);
-}
-
-/* Button Styles */
-.btn-primary {
-  background: linear-gradient(135deg, var(--redwood), var(--violet));
-  color: white;
-  transition: all var(--transition-normal);
-  border: none;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 30px rgba(184, 84, 80, 0.4);
-  background: linear-gradient(135deg, #c44440, #8a0ba7);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--redwood);
-  border: 2px solid var(--redwood);
-  transition: all var(--transition-normal);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.btn-secondary:hover {
-  background: var(--redwood);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(184, 84, 80, 0.3);
-}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, Star, Minus, Plus, Magnet, Image, Droplets } from 'lucide-react';
+import { ArrowLeft, Star, Magnet, Image, Droplets } from 'lucide-react';
 import type { Product } from '../products';
 
 interface ProductDetailProps {
@@ -16,16 +16,16 @@ const StarRating = ({ rating }: { rating: number }) => (
 );
 
 const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
-  const [quantity, setQuantity] = useState(1);
   const [currentImage, setCurrentImage] = useState(product.mainImage);
 
-  const increaseQuantity = () => {
-    setQuantity((prev) => Math.min(prev + 1, 50));
-  };
-
-  const decreaseQuantity = () => {
-    setQuantity((prev) => Math.max(prev - 1, 1));
-  };
+  // TODO: Uncomment when quantity functionality is needed
+  // const [quantity, setQuantity] = useState(1);
+  // const increaseQuantity = () => {
+  //   setQuantity((prev) => Math.min(prev + 1, 50));
+  // };
+  // const decreaseQuantity = () => {
+  //   setQuantity((prev) => Math.max(prev - 1, 1));
+  // };
 
   const changeMainImage = (imageSrc: string) => {
     setCurrentImage(imageSrc);
@@ -42,7 +42,7 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full glass-effect backdrop-blur-md py-3 px-4">
+      <header className="sticky top-0 z-50 w-full bg-white/25 backdrop-blur-[10px] border border-white/[0.18] py-3 px-4">
         <div className="flex items-center justify-between">
           <button
             onClick={onBackToGallery}
@@ -61,7 +61,7 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
             {/* Product Images Section */}
             <div>
               {/* Main Image */}
-              <div className="aspect-[2/3] mb-6 overflow-hidden rounded-2xl glass-effect">
+              <div className="aspect-[2/3] mb-6 overflow-hidden rounded-2xl bg-white/25 backdrop-blur-[10px] border border-white/[0.18]">
                 <img
                   src={currentImage}
                   alt={product.title}
@@ -75,8 +75,8 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
                 {product.thumbnails.map((thumb, index) => (
                   <div
                     key={index}
-                    className={`thumbnail aspect-[2/3] overflow-hidden rounded-xl glass-effect cursor-pointer ${
-                      currentImage === thumb ? 'active' : ''
+                    className={`aspect-[2/3] overflow-hidden rounded-xl bg-white/25 backdrop-blur-[10px] border cursor-pointer transition-all duration-300 hover:scale-105 ${
+                      currentImage === thumb ? 'border-[#B85450] !border-[3px]' : 'border-white/[0.18]'
                     }`}
                     onClick={() => changeMainImage(thumb)}
                   >
@@ -92,8 +92,8 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
 
             {/* Product Information Section */}
             <div>
-              <div className="glass-effect rounded-2xl p-8">
-                <h1 className="text-4xl font-bold mb-4 gradient-text">
+              <div className="bg-white/25 backdrop-blur-[10px] border border-white/[0.18] rounded-2xl p-8">
+                <h1 className="text-4xl font-bold mb-4 bg-gradient-to-br from-[#B85450] to-[#7209B7] bg-clip-text text-transparent">
                   {product.title}
                 </h1>
 
@@ -105,7 +105,7 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
 
                 {/* Price */}
                 <div className="flex items-center mb-6">
-                  <span className="text-4xl font-bold gradient-text mr-4">
+                  <span className="text-4xl font-bold bg-gradient-to-br from-[#B85450] to-[#7209B7] bg-clip-text text-transparent mr-4">
                     {product.price}
                   </span>
                 </div>
@@ -115,13 +115,13 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
                   {product.description}
                 </p>
 
-                {/* Quantity Selector */}
+{/* TODO: Uncomment when quantity and cart functionality is needed
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold mb-4">Cantidad</h3>
                   <div className="flex items-center space-x-4">
                     <button
                       onClick={decreaseQuantity}
-                      className="w-10 h-10 glass-effect rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                      className="w-10 h-10 bg-white/25 backdrop-blur-[10px] border border-white/[0.18] rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
                     >
                       <Minus className="w-4 h-4" />
                     </button>
@@ -130,7 +130,7 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
                     </span>
                     <button
                       onClick={increaseQuantity}
-                      className="w-10 h-10 glass-effect rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                      className="w-10 h-10 bg-white/25 backdrop-blur-[10px] border border-white/[0.18] rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
                     >
                       <Plus className="w-4 h-4" />
                     </button>
@@ -140,12 +140,10 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
                   </div>
                 </div>
 
-                {/* Action Buttons - TODO: Uncomment when cart functionality is ready */}
-                {/* 
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <button
                     onClick={addToCart}
-                    className="btn-primary w-full py-4 px-6 rounded-xl font-semibold flex items-center justify-center space-x-2"
+                    className="bg-gradient-to-br from-[#B85450] to-[#7209B7] text-white border-none font-semibold uppercase tracking-wide transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_15px_30px_rgba(184,84,80,0.4)] hover:bg-gradient-to-br hover:from-[#c44440] hover:to-[#8a0ba7] w-full py-4 px-6 rounded-xl flex items-center justify-center space-x-2"
                   >
                     <ShoppingCart className="w-5 h-5" />
                     <span>añadir a la cesta</span>
@@ -160,7 +158,7 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
                     const IconComponent = iconMap[feature.icon as keyof typeof iconMap] || Star;
 
                     return (
-                      <div key={index} className="feature-card p-4 rounded-xl">
+                      <div key={index} className="bg-white/30 backdrop-blur-[10px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(93,46,70,0.1)] p-4 rounded-xl">
                         <div className="flex items-center gap-3 mb-2">
                           <IconComponent className="w-6 h-6 text-red-600" />
                           <h4 className="font-semibold text-violet-800">{feature.title}</h4>
@@ -172,7 +170,7 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
                 </div>
 
                 {/* Specifications */}
-                <div className="glass-effect rounded-xl p-6">
+                <div className="bg-white/25 backdrop-blur-[10px] border border-white/[0.18] rounded-xl p-6">
                   <h3 className="text-lg font-semibold mb-4">
                     Especificaciones
                   </h3>

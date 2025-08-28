@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="w-full glass-effect backdrop-blur-md py-3 px-4">
+    <footer className="w-full bg-white/25 backdrop-blur-[10px] border border-white/[0.18] py-6 px-4">
       <div className="flex items-center justify-center space-x-8">
         <a
           href="https://www.instagram.com/photoexpressbyclau/"
@@ -20,7 +20,9 @@ const Footer = () => {
           className="flex items-center space-x-2 hover:text-green-600 transition-colors"
         >
           <img src="Whatsapp.svg" alt="WhatsApp" className="w-4 h-4" />
-          <span className="text-gray-700 font-medium text-sm">+34 621 084 649</span>
+          <span className="text-gray-700 font-medium text-sm">
+            +34 621 084 649
+          </span>
         </a>
       </div>
     </footer>

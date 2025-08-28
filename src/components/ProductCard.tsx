@@ -1,30 +1,5 @@
 import { ArrowRight, Star } from 'lucide-react';
-
-interface ProductFeature {
-  icon: string;
-  title: string;
-  description: string;
-}
-
-interface ProductSpecification {
-  label: string;
-  value: string;
-}
-
-interface Product {
-  id: number;
-  title: string;
-  price: string;
-  rating: string;
-  ratingValue: number;
-  reviewCount: number;
-  stock: number;
-  description: string;
-  mainImage: string;
-  thumbnails: string[];
-  features: ProductFeature[];
-  specifications: ProductSpecification[];
-}
+import type { Product } from '../products';
 
 interface ProductCardProps {
   product: Product;

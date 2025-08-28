@@ -1,63 +1,19 @@
 import { useState } from 'react';
-import {
-  ArrowLeft,
-  Star,
-  Minus,
-  Plus,
-  ShoppingCart,
-  Zap,
-  Magnet,
-  Image,
-  Droplets,
-} from 'lucide-react';
-
-interface ProductFeature {
-  icon: string;
-  title: string;
-  description: string;
-}
-
-interface ProductSpecification {
-  label: string;
-  value: string;
-}
-
-interface Product {
-  id: number;
-  title: string;
-  price: string;
-  rating: string;
-  ratingValue: number;
-  reviewCount: number;
-  stock: number;
-  description: string;
-  mainImage: string;
-  thumbnails: string[];
-  features: ProductFeature[];
-  specifications: ProductSpecification[];
-}
+import { ArrowLeft, Star, Minus, Plus, Magnet, Image, Droplets } from 'lucide-react';
+import type { Product } from '../products';
 
 interface ProductDetailProps {
   product: Product;
   onBackToGallery: () => void;
 }
 
-const StarRating = ({ rating }: { rating: number }) => {
-  const fullStars = Math.floor(rating);
-
-  return (
-    <div className="flex items-center">
-      {[...Array(5)].map((_, index) => (
-        <Star
-          key={index}
-          className={`w-5 h-5 ${
-            index < fullStars ? 'text-yellow-400 fill-current' : 'text-gray-300'
-          }`}
-        />
-      ))}
-    </div>
-  );
-};
+const StarRating = ({ rating }: { rating: number }) => (
+  <div className="flex items-center">
+    {[...Array(5)].map((_, i) => (
+      <Star key={i} className={`w-5 h-5 ${i < Math.floor(rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />
+    ))}
+  </div>
+);
 
 const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
   const [quantity, setQuantity] = useState(1);
@@ -75,13 +31,14 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
     setCurrentImage(imageSrc);
   };
 
-  const addToCart = () => {
-    console.log(`Adding ${quantity} of product ${product.id} to cart`);
-  };
+  // TODO: Uncomment when cart functionality is ready
+  // const addToCart = () => {
+  //   console.log(`Adding ${quantity} of product ${product.id} to cart`);
+  // };
 
-  const buyNow = () => {
-    console.log(`Buy now: ${quantity} of product ${product.id}`);
-  };
+  // const buyNow = () => {
+  //   console.log(`Buy now: ${quantity} of product ${product.id}`);
+  // };
 
   return (
     <>
@@ -178,58 +135,37 @@ const ProductDetail = ({ product, onBackToGallery }: ProductDetailProps) => {
                       <Plus className="w-4 h-4" />
                     </button>
                     <span className="text-sm text-gray-600 ml-4">
-                      {product.stock} in stock
+                      {product.stock} en stock
                     </span>
                   </div>
                 </div>
 
-                {/* Action Buttons */}
+                {/* Action Buttons - TODO: Uncomment when cart functionality is ready */}
+                {/* 
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <button
                     onClick={addToCart}
-                    className="btn-primary flex-1 py-4 px-6 rounded-xl font-semibold flex items-center justify-center space-x-2"
+                    className="btn-primary w-full py-4 px-6 rounded-xl font-semibold flex items-center justify-center space-x-2"
                   >
                     <ShoppingCart className="w-5 h-5" />
                     <span>añadir a la cesta</span>
                   </button>
-                  <button
-                    onClick={buyNow}
-                    className="btn-secondary flex-1 py-4 px-6 rounded-xl font-semibold flex items-center justify-center space-x-2"
-                  >
-                    <Zap className="w-5 h-5" />
-                    <span>comprar ahora</span>
-                  </button>
                 </div>
+                */}
 
                 {/* Features Grid */}
                 <div className="grid grid-cols-2 gap-4 mb-8">
                   {product.features.map((feature, index) => {
-                    const getIcon = (iconName: string) => {
-                      switch (iconName) {
-                        case 'magnet':
-                          return <Magnet className="w-6 h-6 text-red-600" />;
-                        case 'image':
-                          return <Image className="w-6 h-6 text-red-600" />;
-                        case 'droplets':
-                          return <Droplets className="w-6 h-6 text-red-600" />;
-                        case 'star':
-                          return <Star className="w-6 h-6 text-red-600" />;
-                        default:
-                          return <Star className="w-6 h-6 text-red-600" />;
-                      }
-                    };
+                    const iconMap = { magnet: Magnet, image: Image, droplets: Droplets, star: Star };
+                    const IconComponent = iconMap[feature.icon as keyof typeof iconMap] || Star;
 
                     return (
                       <div key={index} className="feature-card p-4 rounded-xl">
                         <div className="flex items-center gap-3 mb-2">
-                          {getIcon(feature.icon)}
-                          <h4 className="font-semibold text-violet-800">
-                            {feature.title}
-                          </h4>
+                          <IconComponent className="w-6 h-6 text-red-600" />
+                          <h4 className="font-semibold text-violet-800">{feature.title}</h4>
                         </div>
-                        <p className="text-gray-600 text-sm">
-                          {feature.description}
-                        </p>
+                        <p className="text-gray-600 text-sm">{feature.description}</p>
                       </div>
                     );
                   })}
